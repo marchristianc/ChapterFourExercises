@@ -114,6 +114,10 @@ void math(char *s){
     result = sin(pop());
   }else if(strspn(s, "cos")){
     result = cos(pop());
+  }else if(strspn(s, "exp")){
+    result = exp(pop());
+  }else if(strspn(s, "pow")){
+    result = pow(pop(), pop());
   }
   push(result);
   printf("\tsuccess %f\n", result);
@@ -159,24 +163,13 @@ void rpn(void) {
         clear();
         printf("\tcleared the stack\n");
         break;
-      case '@':
-        push(sin(pop()));
-        break;
-      case '=':
-        push(exp(pop()));
-        break;
-      case '^':
-        push(pow(pop(), pop()));
-        break;
       case 'a': //set variable with CAPS
         vars[s[0] - 'A'] = top();
         break;
       case 'z': //get variable with no caps
         push(vars[s[0] - 'a']);
         break;
-      case MATH:
-        math(s);
-        break;
+      case MATH: math(s); break;
       default:      fprintf(stderr, "unknown command %s\n", s);  break;
     }
   }
