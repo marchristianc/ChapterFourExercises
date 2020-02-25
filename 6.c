@@ -135,13 +135,13 @@ void rpn(void) {
         clear();
         printf("\tcleared the stack\n");
         break;
-      case 's':
+      case '@':
         push(sin(pop()));
         break;
-      case 'e':
+      case '=':
         push(exp(pop()));
         break;
-      case 'p':
+      case '^':
         push(pow(pop(), pop()));
         break;
       case 'a': //set variable with CAPS
